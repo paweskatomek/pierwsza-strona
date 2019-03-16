@@ -1,3 +1,19 @@
+$ export note path
+export NODE_PATH=/d/apps/node-v10.15.3-win-x64
+export PATH=$NODE_PATH:$PATH
+
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
