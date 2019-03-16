@@ -1,16 +1,34 @@
 
+import { List, ListItem, ListItemContent } from 'react-mdl';
+import axios from 'axios';
 
 import React, { Component } from 'react';
 import { Navigation } from 'react-mdl';
-class AppNavigation extends Component  {
-    render(){
+class AppNavigation extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            links: []
+        };
+
+    }
+
+    componentWillMount() {
+        axios.get('/links.json')
+            .then(res => {
+                const links = res.data;
+                this.setState({ links });
+            });
+    }
+    render() {
         return (
             <Navigation>
-            <a href="https://onet.pl">Onet.pl</a>
-            <a href="https://wp.pl">wp.pl</a>
-            <a href="https://google.com">google.com</a>
-            <a href="https://github.com/paweskatomek">mój github</a>
-          </Navigation>
+                {this.state.links.map(clink =>
+                    <a href={clink.url}>{clink.name}</a>
+
+                )}
+            </Navigation>
         );
     }
 }
